@@ -57,10 +57,27 @@
       display: none;
       width: 80%;
       margin-top: 20px;
+      position: relative;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      overflow: hidden;
     }
 
     .content.active {
       display: block;
+      opacity: 1;
+      animation: slideIn 0.5s forwards;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
     iframe {
@@ -77,20 +94,12 @@
       border-radius: 5px;
       padding: 15px;
       margin: 20px 0;
-      width: 100%;
       color: #00adb5;
     }
 
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    /* Centering the second content */
+    #bag {
+      text-align: center;
     }
   </style>
 </head>
@@ -189,10 +198,14 @@
         const targetContent = document.getElementById(tab.getAttribute('data-content'));
 
         tabs.forEach(t => t.classList.remove('active'));
-        contents.forEach(c => c.classList.remove('active'));
+        contents.forEach(c => {
+          c.classList.remove('active');
+          c.style.display = 'none';
+        });
 
         tab.classList.add('active');
         targetContent.classList.add('active');
+        targetContent.style.display = 'block';
       });
     });
   </script>

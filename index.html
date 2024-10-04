@@ -34,10 +34,12 @@
       text-align: right;
     }
 
+    /* Styles for tabs */
     .tabs {
       display: flex;
       margin-top: 20px;
-      flex-wrap: wrap; /* Allows the tabs to wrap on smaller screens */
+      flex-wrap: wrap;
+      justify-content: center; /* Centers the tabs */
     }
 
     .tab {
@@ -48,8 +50,6 @@
       color: #00adb5;
       border-bottom: 2px solid transparent;
       transition: border-bottom 0.3s;
-      flex: 1 1 30%; /* Allows tabs to adjust based on screen size */
-      text-align: center; /* Centers the text in the tab */
     }
 
     .tab.active {
@@ -58,8 +58,8 @@
 
     .content {
       display: none;
-      width: 90%; /* Adjust width for smaller screens */
-      max-width: 800px; /* Maximum width for larger screens */
+      width: 90%;
+      max-width: 800px;
       margin-top: 20px;
       position: relative;
       opacity: 0;
@@ -87,8 +87,8 @@
 
     iframe {
       width: 100%;
-      height: auto; /* Responsive height */
-      max-height: 315px; /* Maximum height */
+      height: auto;
+      max-height: 315px;
       border: none;
       margin-top: 20px;
     }
@@ -103,25 +103,28 @@
       color: #00adb5;
     }
 
-    /* Centering the second content */
-    #bag {
-      text-align: center;
-    }
-
     /* Responsive styles */
     @media (max-width: 768px) {
-      h1 {
-        font-size: 2em; /* Smaller heading on small screens */
+      .tabs {
+        flex-direction: column; /* Stack tabs vertically */
+        align-items: center; /* Center align tabs */
       }
 
       .tab {
-        font-size: 1.1em; /* Smaller tab text */
+        width: 100%; /* Full width for mobile tabs */
+        text-align: center; /* Center text for mobile */
+        font-size: 1.5em; /* Larger text for mobile */
+        padding: 10px 0; /* Adjust padding */
+      }
+
+      .content {
+        padding: 10px; /* More padding for mobile content */
       }
     }
 
-    @media (max-width: 480px) {
-      .tab {
-        font-size: 1em; /* Even smaller tab text on very small screens */
+    @media (min-width: 769px) {
+      .tabs {
+        flex-direction: row; /* Row layout for larger screens */
       }
     }
   </style>

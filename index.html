@@ -37,6 +37,7 @@
     .tabs {
       display: flex;
       margin-top: 20px;
+      flex-wrap: wrap; /* Allows the tabs to wrap on smaller screens */
     }
 
     .tab {
@@ -47,6 +48,8 @@
       color: #00adb5;
       border-bottom: 2px solid transparent;
       transition: border-bottom 0.3s;
+      flex: 1 1 30%; /* Allows tabs to adjust based on screen size */
+      text-align: center; /* Centers the text in the tab */
     }
 
     .tab.active {
@@ -55,7 +58,8 @@
 
     .content {
       display: none;
-      width: 80%;
+      width: 90%; /* Adjust width for smaller screens */
+      max-width: 800px; /* Maximum width for larger screens */
       margin-top: 20px;
       position: relative;
       opacity: 0;
@@ -74,6 +78,7 @@
         transform: translateY(20px);
         opacity: 0;
       }
+
       to {
         transform: translateY(0);
         opacity: 1;
@@ -82,7 +87,8 @@
 
     iframe {
       width: 100%;
-      height: 315px;
+      height: auto; /* Responsive height */
+      max-height: 315px; /* Maximum height */
       border: none;
       margin-top: 20px;
     }
@@ -100,6 +106,23 @@
     /* Centering the second content */
     #bag {
       text-align: center;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em; /* Smaller heading on small screens */
+      }
+
+      .tab {
+        font-size: 1.1em; /* Smaller tab text */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .tab {
+        font-size: 1em; /* Even smaller tab text on very small screens */
+      }
     }
   </style>
 </head>
@@ -181,11 +204,10 @@
       <ol>
         <li><strong>Cut the Can:</strong> Using scissors, cut the soda can in half.</li>
         <li><strong>Smooth the Edges:</strong> Sand the edges of the cut can to avoid sharp edges.</li>
-        <li><strong>Make a Lid:</strong> Use the top half as a lid. You can mark a circle on the bottom half using the marker to mark a circle slightly smaller than the circumference of the can's body.</li>
-        <li><strong>Cut the Lid:</strong> Cut out the marked circle to create a lid for your container.</li>
-        <li><strong>Decorate:</strong> Feel free to paint or decorate the container as you like!</li>
+        <li><strong>Make it Decorative:</strong> Use markers to decorate the can as you like.</li>
+        <li><strong>Usage:</strong> This can container is great for organizing small items!</li>
       </ol>
-      <p>This can container is perfect for storing small items like pens or pencils and demonstrates how to repurpose materials creatively.</p>
+      <p>It's a simple and creative way to reuse an item that would otherwise be thrown away!</p>
     </div>
   </div>
 
@@ -201,11 +223,13 @@
         contents.forEach(c => {
           c.classList.remove('active');
           c.style.display = 'none';
+          c.style.opacity = '0'; // Reset opacity for sliding animation
         });
 
         tab.classList.add('active');
         targetContent.classList.add('active');
         targetContent.style.display = 'block';
+        targetContent.style.opacity = '1'; // Set opacity for sliding animation
       });
     });
   </script>

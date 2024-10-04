@@ -92,7 +92,9 @@
       color: #00adb5;
     }
 
-    .sustainability {
+    .sustainability,
+    .paper-bag,
+    .can-container {
       background-color: #16213e;
       border-radius: 5px;
       padding: 15px;
@@ -106,6 +108,7 @@
         opacity: 0;
         transform: translateY(-10px);
       }
+
       100% {
         opacity: 1;
         transform: translateY(0);
@@ -125,7 +128,7 @@
     <div class="accordion-item active">
       <h2>First Video</h2>
       <p>
-        <iframe id="video1" src="https://www.youtube.com/embed/pbh6Lm92qjM" title="YouTube video player"></iframe>
+        <iframe id="video1" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player"></iframe>
         <span class="video-description">This is a description of the first video.</span>
       </p>
       <div class="sustainability">
@@ -153,32 +156,69 @@
     <div class="accordion-item">
       <h2>Second Video</h2>
       <p>
-        <iframe id="video2" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player"></iframe>
+        <iframe id="video2" src="https://www.youtube.com/embed/-LJoPDHKM74" title="YouTube video player"></iframe>
         <span class="video-description">This is a description of the second video.</span>
       </p>
+      <div class="paper-bag">
+        <h3>Easy Paper Bag Folding Steps</h3>
+        <p>Follow these steps to create a simple paper bag without glue:</p>
+        <h4>Materials Needed:</h4>
+        <ul>
+          <li>A rectangular piece of paper (e.g., an A4 sheet or any other size)</li>
+        </ul>
+        <h4>Steps:</h4>
+        <ol>
+          <li><strong>Prepare the Paper:</strong> Start with a rectangular piece of paper, with the longer side positioned horizontally.</li>
+          <li><strong>Fold the Paper in Half:</strong> Fold the paper in half lengthwise, aligning the edges, and create a crease. Then unfold it to have a guideline.</li>
+          <li><strong>Fold the Top Edges:</strong> Take the top edge of the paper and fold it down to meet the center crease. Repeat for the other edge.</li>
+          <li><strong>Create the Flaps:</strong> Fold the paper down again, about 2-3 inches, creating a flap that holds the previous folds.</li>
+          <li><strong>Fold the Sides:</strong> Fold each side of the paper toward the center crease, leaving a small gap in the middle.</li>
+          <li><strong>Secure the Sides:</strong> Fold the bottom of the paper up to create the bag’s base, locking the sides into place.</li>
+          <li><strong>Create the Bottom of the Bag:</strong> Flatten the bottom by folding the corners in to form a triangle.</li>
+          <li><strong>Finish the Bag:</strong> Fold the triangles down, tucking them in to secure the bottom.</li>
+          <li><strong>Open the Bag:</strong> Unfold the top and separate the sides to reveal your paper bag.</li>
+        </ol>
+        <p>Experiment with different sizes of paper for various bag sizes!</p>
+      </div>
     </div>
 
     <div class="accordion-item">
-      <h2>Third Video</h2>
+      <h2>Can Container</h2>
       <p>
-        <iframe id="video3" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player"></iframe>
-        <span class="video-description">This is a description of the third video.</span>
+        <iframe id="video3" src="https://www.youtube.com/embed/mqx4Aqmj1lE" title="YouTube video player"></iframe>
+        <span class="video-description">This is a description of the can container video.</span>
       </p>
+      <div class="can-container">
+        <h3>Make a Can Container</h3>
+        <p>Follow these steps to create a can container from a soda can:</p>
+        <h4>Materials Needed:</h4>
+        <ul>
+          <li>A clean soda can</li>
+          <li>Sandpaper</li>
+          <li>Scissors or a can opener</li>
+          <li>A ruler</li>
+          <li>A marker</li>
+        </ul>
+        <h4>Steps:</h4>
+        <ol>
+          <li><strong>Prepare the Can:</strong> Start by cleaning the soda can thoroughly and removing the label.</li>
+          <li><strong>Cut the Can:</strong> Using scissors or a can opener, carefully cut the can in half horizontally.</li>
+          <li><strong>Smooth the Edges:</strong> Use sandpaper to smooth any sharp edges of the cut can.</li>
+          <li><strong>Create the Lid:</strong> Take the top half of the can and use the marker to mark a circle slightly smaller than the circumference of the can's body.</li>
+          <li><strong>Cut the Lid:</strong> Cut out the marked circle to create a lid for your container.</li>
+          <li><strong>Assemble:</strong> Fit the lid onto the bottom half of the can. You can use tape to secure it if needed.</li>
+          <li><strong>Decorate:</strong> Feel free to paint or decorate your can container as you like!</li>
+        </ol>
+        <p>This can container is perfect for storing small items, showing how everyday trash can be transformed into something useful!</p>
+      </div>
     </div>
   </div>
 
   <script>
-    const accordionItems = document.querySelectorAll('.accordion-item');
-
-    accordionItems.forEach(item => {
-      const header = item.querySelector('h2');
+    document.querySelectorAll('.accordion-item h2').forEach(header => {
       header.addEventListener('click', () => {
-        if (item.classList.contains('active')) {
-          item.classList.remove('active');
-        } else {
-          accordionItems.forEach(i => i.classList.remove('active'));
-          item.classList.add('active');
-        }
+        const item = header.parentElement;
+        item.classList.toggle('active');
       });
     });
   </script>

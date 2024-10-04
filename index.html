@@ -5,12 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Recycling Made Easy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Futura&display=swap" rel="stylesheet">
   <style>
     body {
       background-color: #001f3f;
       color: #ffffff;
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Futura', sans-serif;
       margin: 0;
       padding: 0;
       display: flex;
@@ -25,30 +25,117 @@
       text-align: center;
     }
 
-    iframe {
-      border: none;
-      margin: 20px 0;
+    .credits {
+      font-size: 0.8em;
+      color: #00d4ff;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      text-align: right;
     }
 
-    p {
-      color: #00b3b3;
+    .container {
+      display: flex;
+      justify-content: space-between;
+      width: 80%;
+      margin-top: 20px;
+    }
+
+    .accordion {
+      width: 40%;
+    }
+
+    .accordion-item {
+      background-color: #003366;
+      margin: 5px 0;
+      border-radius: 5px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .accordion-item h2 {
+      cursor: pointer;
+      padding: 15px;
+      margin: 0;
+      background-color: #004f80;
       font-size: 1.2em;
-      text-align: center;
+    }
+
+    .accordion-item p {
+      margin: 0;
+      padding: 15px;
+      display: none;
+    }
+
+    .accordion-item.active p {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+    }
+
+    .video-container {
+      width: 55%;
     }
   </style>
 </head>
 
 <body>
-  <h1>Recycling Made Easy by Fizan, Sree, Adidev, and Gavin from 7B2</h1>
+  <h1>Recycling Made Easy</h1>
 
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" allowfullscreen></iframe>
-  <p>This is a description of the first video.</p>
+  <div class="credits">
+    <p>By Fizan, Sree, Adidev, Gavin from 7B2</p>
+  </div>
 
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" allowfullscreen></iframe>
-  <p>This is a description of the second video.</p>
+  <div class="container">
+    <div class="accordion">
+      <div class="accordion-item active">
+        <h2>First Video</h2>
+        <p>This is a description of the first video.</p>
+      </div>
 
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" allowfullscreen></iframe>
-  <p>This is a description of the third video.</p>
+      <div class="accordion-item">
+        <h2>Second Video</h2>
+        <p>This is a description of the second video.</p>
+      </div>
+
+      <div class="accordion-item">
+        <h2>Third Video</h2>
+        <p>This is a description of the third video.</p>
+      </div>
+    </div>
+
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player"></iframe>
+    </div>
+  </div>
+
+  <script>
+    const accordionItems = document.querySelectorAll('.accordion-item');
+
+    accordionItems.forEach(item => {
+      const header = item.querySelector('h2');
+      header.addEventListener('click', () => {
+        accordionItems.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+      });
+    });
+  </script>
 </body>
 
 </html>

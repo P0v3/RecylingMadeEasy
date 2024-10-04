@@ -5,12 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Recycling Made Easy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Futura&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: #001f3f;
-      color: #ffffff;
-      font-family: 'Futura', sans-serif;
+      background-color: #1a1a2e;
+      color: #eaeaea;
+      font-family: 'Montserrat', sans-serif;
       margin: 0;
       padding: 0;
       display: flex;
@@ -21,13 +21,13 @@
     h1 {
       font-size: 2.5em;
       margin-top: 20px;
-      color: #00d4ff;
+      color: #e94560;
       text-align: center;
     }
 
     .credits {
       font-size: 0.8em;
-      color: #00d4ff;
+      color: #00adb5;
       position: absolute;
       top: 10px;
       right: 10px;
@@ -36,18 +36,15 @@
 
     .container {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+      justify-content: center;
       width: 80%;
       margin-top: 20px;
     }
 
-    .accordion {
-      width: 40%;
-    }
-
     .accordion-item {
-      background-color: #003366;
-      margin: 5px 0;
+      background-color: #16213e;
+      margin: 10px 0;
       border-radius: 5px;
       overflow: hidden;
       transition: all 0.4s ease;
@@ -57,15 +54,29 @@
       cursor: pointer;
       padding: 15px;
       margin: 0;
-      background-color: #004f80;
-      font-size: 1.2em;
+      background-color: #0f3460;
+      font-size: 1.3em;
+      color: #00adb5;
+      border-bottom: 2px solid #00adb5;
+      text-decoration: underline;
     }
 
-    .extra-text {
-      margin-top: 10px;
-      font-size: 1.1em;
-      color: #00b3b3;
-      text-align: center;
+    .accordion-item.active h2 {
+      background-color: #e94560;
+      color: #ffffff;
+    }
+
+    .accordion-item p {
+      margin: 0;
+      padding: 15px;
+      background-color: #1a1a2e;
+      display: none;
+      color: #00adb5;
+    }
+
+    .accordion-item.active p {
+      display: block;
+      animation: fadeIn 0.5s ease;
     }
 
     iframe {
@@ -75,14 +86,21 @@
       margin-top: 20px;
     }
 
-    .video-container {
-      width: 55%;
-    }
-
     .video-description {
       margin-top: 10px;
-      color: #00b3b3;
       font-size: 1.2em;
+      color: #00adb5;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
@@ -95,57 +113,43 @@
   </div>
 
   <div class="container">
-    <div class="accordion">
-      <div class="accordion-item active">
-        <h2>First Video</h2>
-      </div>
-
-      <div class="accordion-item">
-        <h2>Second Video</h2>
-      </div>
-
-      <div class="accordion-item">
-        <h2>Third Video</h2>
-      </div>
-
-      <div class="extra-text">
-        <p>Select a video to view the details and description on the right.</p>
-      </div>
+    <div class="accordion-item active">
+      <h2>First Video</h2>
+      <p>
+        <iframe id="video1" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player"></iframe>
+        <span class="video-description">This is a description of the first video.</span>
+      </p>
     </div>
 
-    <div class="video-container">
-      <iframe id="video-frame" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player"></iframe>
-      <p id="video-description" class="video-description">This is a description of the first video.</p>
+    <div class="accordion-item">
+      <h2>Second Video</h2>
+      <p>
+        <iframe id="video2" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player"></iframe>
+        <span class="video-description">This is a description of the second video.</span>
+      </p>
+    </div>
+
+    <div class="accordion-item">
+      <h2>Third Video</h2>
+      <p>
+        <iframe id="video3" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player"></iframe>
+        <span class="video-description">This is a description of the third video.</span>
+      </p>
     </div>
   </div>
 
   <script>
     const accordionItems = document.querySelectorAll('.accordion-item');
-    const videoFrame = document.getElementById('video-frame');
-    const videoDescription = document.getElementById('video-description');
 
-    const videos = [
-      {
-        url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-        description: 'This is a description of the first video.'
-      },
-      {
-        url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-        description: 'This is a description of the second video.'
-      },
-      {
-        url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-        description: 'This is a description of the third video.'
-      }
-    ];
-
-    accordionItems.forEach((item, index) => {
+    accordionItems.forEach(item => {
       const header = item.querySelector('h2');
       header.addEventListener('click', () => {
-        accordionItems.forEach(i => i.classList.remove('active'));
-        item.classList.add('active');
-        videoFrame.src = videos[index].url;
-        videoDescription.textContent = videos[index].description;
+        if (item.classList.contains('active')) {
+          item.classList.remove('active');
+        } else {
+          accordionItems.forEach(i => i.classList.remove('active'));
+          item.classList.add('active');
+        }
       });
     });
   </script>

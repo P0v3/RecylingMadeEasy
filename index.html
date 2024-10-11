@@ -99,6 +99,14 @@
       margin: 6px 0;
     }
 
+    .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
     .side-menu {
       position: absolute;
       top: 0;
@@ -111,6 +119,7 @@
 
     .side-menu.open {
       left: 0;
+      animation: slideIn 0.5s forwards;
     }
 
     .side-menu ul {
@@ -134,11 +143,11 @@
 
     @keyframes slideIn {
       from {
-        transform: translateY(20px);
+        transform: translateX(-250px);
         opacity: 0;
       }
       to {
-        transform: translateY(0);
+        transform: translateX(0);
         opacity: 1;
       }
     }
@@ -160,51 +169,18 @@
     <span></span>
     <span></span>
     <span></span>
+    <span class="close-button" onclick="toggleMenu()">×</span>
   </div>
 
   <div class="side-menu" id="sideMenu">
     <ul>
-      <li onclick="showTab('pouch')">Pouch made with a Plastic Bottle</li>
-      <li onclick="showTab('bag')">Paper Bag made from Newspaper</li>
-      <li onclick="showTab('container')">Can Container made from Soda Can</li>
       <li onclick="showTab('new-section')">New Section</li>
     </ul>
   </div>
 
   <h1>Recycling Made Easy</h1>
 
-  <div class="tabs">
-    <div class="tab active" data-content="pouch">Pouch made with a Plastic Bottle</div>
-    <div class="tab" data-content="bag">Bag made with an old newspaper</div>
-    <div class="tab" data-content="container">Can Container</div>
-    <div class="tab" data-content="new-section">New Section</div>
-  </div>
-
-  <div class="content active" id="pouch">
-    <iframe id="video1" src="https://www.youtube.com/embed/pbh6Lm92qjM" title="Pouch made with a Plastic Bottle"></iframe>
-    <div class="do-it-yourself">
-      <h3>Do it Yourself!</h3>
-      <p>I made a pouch using a plastic bottle and a zipper...</p>
-    </div>
-  </div>
-
-  <div class="content" id="bag">
-    <iframe id="video2" src="https://www.youtube.com/embed/-LJoPDHKM74" title="Paper Bag"></iframe>
-    <div class="do-it-yourself">
-      <h3>Do it Yourself!</h3>
-      <p>Follow these steps to create a simple paper bag...</p>
-    </div>
-  </div>
-
-  <div class="content" id="container">
-    <iframe id="video3" src="https://www.youtube.com/embed/mqx4Aqmj1lE" title="Can Container"></iframe>
-    <div class="do-it-yourself">
-      <h3>Do it Yourself!</h3>
-      <p>Follow these steps to create a can container from a soda can...</p>
-    </div>
-  </div>
-
-  <div class="content" id="new-section">
+  <div class ="content active" id="new-section">
     <div class="do-it-yourself">
       <h3>New Section Content</h3>
       <p>This is a new section where you can add any new project or information!</p>
@@ -212,35 +188,25 @@
   </div>
 
   <script>
-    const tabs = document.querySelectorAll('.tab');
-    const contents = document.querySelectorAll('.content');
+    let tabs = document.querySelectorAll('.tab');
+    let contents = document.querySelectorAll('.content');
 
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-
-        contents.forEach(content => {
-          content.classList.remove('active');
-        });
-
-        document.getElementById(tab.dataset.content).classList.add('active');
+    function showTab(tabId) {
+      tabs.forEach((tab) => {
+        tab.classList.remove('active');
       });
-    });
+
+      contents.forEach((content) => {
+        content.classList.remove('active');
+      });
+
+      document.getElementById(tabId).classList.add('active');
+    }
 
     function toggleMenu() {
-      document.getElementById("sideMenu").classList.toggle("open");
-    }
-
-    function showTab(tabName) {
-      tabs.forEach(tab => tab.classList.remove('active'));
-      contents.forEach(content => content.classList.remove('active'));
-      document.querySelector(`[data-content="${tabName}"]`).classList.add('active');
-      document.getElementById(tabName).classList.add('active');
-      toggleMenu(); // Close the menu after selecting
+      document.getElementById('sideMenu').classList.toggle('open');
     }
   </script>
-
 </body>
 
 </html>

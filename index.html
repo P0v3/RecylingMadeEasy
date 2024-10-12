@@ -18,11 +18,22 @@
       align-items: center;
     }
 
-    h1 {
-      font-size: 2.5em;
+    /* Styles for header menu */
+    .menu-icon {
+      cursor: pointer;
       margin-top: 20px;
-      color: #e94560;
-      text-align: center;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    .line {
+      display: block;
+      width: 30px;
+      height: 4px;
+      background-color: #e94560;
+      margin: 5px 0;
+      transition: all 0.3s ease;
     }
 
     /* Styles for tabs */
@@ -69,6 +80,7 @@
         transform: translateY(20px);
         opacity: 0;
       }
+
       to {
         transform: translateY(0);
         opacity: 1;
@@ -83,6 +95,7 @@
       margin-top: 20px;
     }
 
+    .sustainability,
     .paper-bag,
     .can-container {
       background-color: #16213e;
@@ -92,88 +105,75 @@
       color: #00adb5;
     }
 
-    /* Hamburger Menu */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: space-around;
-      width: 30px;
-      height: 30px;
-      cursor: pointer;
-    }
-
-    .hamburger div {
-      width: 100%;
-      height: 4px;
-      background: #eaeaea;
-    }
-
-    .hamburger.close div:nth-child(2) {
-      opacity: 0;
-    }
-
-    .hamburger.close div:nth-child(1) {
-      transform: rotate(45deg);
-      transform-origin: 10% 50%;
-    }
-
-    .hamburger.close div:nth-child(3) {
-      transform: rotate(-45deg);
-      transform-origin: 10% 50%;
-    }
-
-    .tabs {
-      display: flex;
-    }
-
     /* Responsive styles */
     @media (max-width: 768px) {
+      .menu-icon {
+        left: 15px; /* Adjusted for mobile */
+      }
+
       .tabs {
-        display: none;
-      }
-
-      .hamburger {
-        display: flex;
-      }
-
-      .tabs.open {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        background-color: #1a1a2e;
+        flex-direction: column; /* Stack tabs vertically */
+        align-items: center; /* Center align tabs */
       }
 
       .tab {
-        padding: 20px;
-        border-bottom: 1px solid #eaeaea;
+        width: 100%; /* Full width for mobile tabs */
+        text-align: center; /* Center text for mobile */
+        font-size: 1.5em; /* Larger text for mobile */
+        padding: 10px 0; /* Adjust padding */
       }
 
-      .tab.active {
-        border-bottom: 2px solid #e94560;
+      .content {
+        padding: 10px; /* More padding for mobile content */
       }
     }
 
+    @media (min-width: 769px) {
+      .tabs {
+        flex-direction: row; /* Row layout for larger screens */
+      }
+    }
   </style>
 </head>
 
 <body>
-  <h1>Recycling Made Easy</h1>
-
-  <div class="hamburger" id="hamburger">
-    <div></div>
-    <div></div>
-    <div></div>
+  <div class="menu-icon" onclick="toggleMenu()">
+    <span class="line"></span>
+    <span class="line"></span>
+    <span class="line"></span>
   </div>
 
-  <div class="tabs" id="tabs">
-    <div class="tab active" data-content="bag">Bag made with an old newspaper</div>
+  <div class="tabs">
+    <div class="tab active" data-content="pouch">Pouch made with a Plastic Bottle</div>
+    <div class="tab" data-content="bag">Bag made with an old newspaper</div>
     <div class="tab" data-content="container">Can Container</div>
   </div>
 
-  <div class="content active" id="bag">
+  <div class="content active" id="pouch">
+    <iframe id="video1" src="https://www.youtube.com/embed/pbh6Lm92qjM" title="YouTube video player"></iframe>
+    <div class="sustainability">
+      <h3>I Made a Pouch!</h3>
+      <p>
+        I made a pouch using a plastic bottle and a zipper. This project is a fantastic example of upcycling, which helps reduce plastic waste that would otherwise end up in landfills or the ocean. By repurposing a plastic bottle, I’m giving it a second life, minimizing the need for new materials, and promoting sustainability.
+      </p>
+      <h4>Benefits:</h4>
+      <ul>
+        <li><strong>Reduces Waste:</strong> By turning a plastic bottle into a pouch, I help decrease plastic waste.</li>
+        <li><strong>Saves Resources:</strong> This process minimizes the demand for new materials, lowering environmental impact.</li>
+        <li><strong>Encourages Creativity:</strong> It promotes innovative ways to recycle everyday items.</li>
+      </ul>
+      <h4>How I Made It:</h4>
+      <ol>
+        <li><strong>Gather Materials:</strong> I collected a clean plastic bottle, a zipper, scissors, and a hot glue gun.</li>
+        <li><strong>Cut the Bottle:</strong> I cut off the top half of the bottle, leaving the bottom half for the pouch.</li>
+        <li><strong>Attach the Zipper:</strong> I lined the zipper around the opening and glued it securely to the edges of the bottle.</li>
+        <li><strong>Finishing Touches:</strong> Once the glue dried, I had a durable and practical pouch ready for use.</li>
+      </ol>
+      <p>This upcycled pouch is perfect for storing small items, showcasing how simple creativity can make a positive impact on the environment!</p>
+    </div>
+  </div>
+
+  <div class="content" id="bag">
     <iframe id="video2" src="https://www.youtube.com/embed/-LJoPDHKM74" title="YouTube video player"></iframe>
     <div class="paper-bag">
       <h3>Easy Paper Bag Folding Steps</h3>
@@ -211,38 +211,36 @@
       </ul>
       <h4>Steps:</h4>
       <ol>
-        <li><strong>Cut the Can:</strong> Using scissors, cut the soda can into your desired shape and height.</li>
-        <li><strong>Decorate:</strong> Use markers or paint to decorate the can as you like.</li>
-        <li><strong>Usage:</strong> This can container is great for organizing small items!</li>
+        <li><strong>Cut the Can:</strong> Carefully cut the can with scissors to remove the top, creating a cylinder.</li>
+        <li><strong>Clean the Edges:</strong> Use sandpaper to smooth out any sharp edges from the cut.</li>
+        <li><strong>Decorate the Container:</strong> Use a marker or paint to personalize your can container.</li>
+        <li><strong>Use Your Container:</strong> Fill it with small items like pens, pencils, or other supplies!</li>
       </ol>
-      <p>It's a simple and creative way to reuse an item that would otherwise be thrown away!</p>
+      <p>This project not only recycles but also gives you a unique container for your items!</p>
     </div>
   </div>
 
   <script>
-    const tabs = document.querySelectorAll('.tab');
-    const contents = document.querySelectorAll('.content');
-    const hamburger = document.getElementById('hamburger');
-    const tabsContainer = document.getElementById('tabs');
-
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-
-        contents.forEach(content => {
-          content.classList.remove('active');
-        });
-
-        document.getElementById(tab.dataset.content).classList.add('active');
-        tabsContainer.classList.remove('open'); // Close menu on selection
-        hamburger.classList.remove('close'); // Reset hamburger icon
+    function toggleMenu() {
+      const contentElements = document.querySelectorAll('.content');
+      contentElements.forEach(content => {
+        content.classList.toggle('active');
       });
-    });
+    }
 
-    hamburger.addEventListener('click', () => {
-      tabsContainer.classList.toggle('open');
-      hamburger.classList.toggle('close');
+    const tabs = document.querySelectorAll('.tab');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', function () {
+        const targetContent = document.getElementById(this.getAttribute('data-content'));
+
+        // Hide all content and remove active class from tabs
+        tabs.forEach(t => t.classList.remove('active'));
+        contentElements.forEach(content => content.classList.remove('active'));
+
+        // Show target content and add active class to clicked tab
+        targetContent.classList.add('active');
+        this.classList.add('active');
+      });
     });
   </script>
 </body>

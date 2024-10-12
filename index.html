@@ -69,6 +69,7 @@
         transform: translateY(20px);
         opacity: 0;
       }
+
       to {
         transform: translateY(0);
         opacity: 1;
@@ -93,6 +94,30 @@
       color: #00adb5;
     }
 
+    /* Hamburger menu styles */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      margin: 20px;
+    }
+
+    .bar {
+      height: 4px;
+      width: 25px;
+      background-color: #eaeaea;
+      margin: 3px 0;
+      transition: 0.4s;
+    }
+
+    .close {
+      display: none;
+      cursor: pointer;
+      font-size: 2em;
+      color: #eaeaea;
+      margin: 20px;
+    }
+
     /* Responsive styles */
     @media (max-width: 768px) {
       h1 {
@@ -114,6 +139,14 @@
       .content {
         padding: 10px; /* More padding for mobile content */
       }
+
+      .hamburger {
+        display: flex; /* Show hamburger menu on mobile */
+      }
+
+      .close {
+        display: block; /* Show close button on mobile */
+      }
     }
 
     @media (min-width: 769px) {
@@ -127,27 +160,68 @@
 <body>
   <h1>Recycling Made Easy</h1>
 
+  <div class="hamburger" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+  <div class="close" onclick="closeMenu()" style="display: none;">&times;</div>
+
   <div class="tabs">
-    <div class="tab active" data-content="pouch">Pouch made with a Plastic Bottle</div>
     <div class="tab" data-content="bag">Bag made with an old newspaper</div>
     <div class="tab" data-content="container">Can Container</div>
   </div>
 
-  <div class="content active" id="pouch">
-    <h3>I Made a Pouch!</h3>
-  </div>
-
   <div class="content" id="bag">
-    <h3>Easy Paper Bag Folding Steps</h3>
+    <iframe id="video2" src="https://www.youtube.com/embed/-LJoPDHKM74" title="YouTube video player"></iframe>
+    <div class="paper-bag">
+      <h3>Easy Paper Bag Folding Steps</h3>
+      <p>Follow these steps to create a simple paper bag without glue:</p>
+      <h4>Materials Needed:</h4>
+      <ul>
+        <li>A rectangular piece of paper (e.g., an A4 sheet or any other size)</li>
+      </ul>
+      <h4>Steps:</h4>
+      <ol>
+        <li><strong>Prepare the Paper:</strong> Start with a rectangular piece of paper, with the longer side positioned horizontally.</li>
+        <li><strong>Fold the Paper in Half:</strong> Fold the paper in half lengthwise, aligning the edges, and create a crease. Then unfold it to have a guideline.</li>
+        <li><strong>Fold the Top Edges:</strong> Take the top edge of the paper and fold it down to meet the center crease. Repeat for the other edge.</li>
+        <li><strong>Create the Flaps:</strong> Fold the paper down again, about 2-3 inches, creating a flap that holds the previous folds.</li>
+        <li><strong>Fold the Sides:</strong> Fold each side of the paper toward the center crease, leaving a small gap in the middle.</li>
+        <li><strong>Secure the Sides:</strong> Fold the bottom of the paper up to create the bag’s base, locking the sides into place.</li>
+        <li><strong>Create the Bottom of the Bag:</strong> Flatten the bottom by folding the corners in to form a triangle.</li>
+        <li><strong>Finish the Bag:</strong> Fold the triangles down, tucking them in to secure the bottom.</li>
+        <li><strong>Open the Bag:</strong> Unfold the top and separate the sides to reveal your paper bag.</li>
+      </ol>
+      <p>Experiment with different sizes of paper for various bag sizes!</p>
+    </div>
   </div>
 
   <div class="content" id="container">
-    <h3>Make a Can Container using an old can</h3>
+    <iframe id="video3" src="https://www.youtube.com/embed/mqx4Aqmj1lE" title="YouTube video player"></iframe>
+    <div class="can-container">
+      <h3>Make a Can Container using an old can</h3>
+      <p>Follow these steps to create a can container from a soda can:</p>
+      <h4>Materials Needed:</h4>
+      <ul>
+        <li>A soda can</li>
+        <li>Scissors</li>
+        <li>A marker</li>
+      </ul>
+      <h4>Steps:</h4>
+      <ol>
+        <li><strong>Cut the Can:</strong> Using scissors, cut the soda can into your desired shape and height.</li>
+        <li><strong>Decorate:</strong> Use markers or paint to decorate the can as you like.</li>
+        <li><strong>Usage:</strong> This can container is great for organizing small items!</li>
+      </ol>
+      <p>It's a simple and creative way to reuse an item that would otherwise be thrown away!</p>
+    </div>
   </div>
 
   <script>
     const tabs = document.querySelectorAll('.tab');
     const contents = document.querySelectorAll('.content');
+    const closeButton = document.querySelector('.close');
 
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
@@ -161,6 +235,20 @@
         document.getElementById(tab.dataset.content).classList.add('active');
       });
     });
+
+    function toggleMenu() {
+      const hamburger = document.querySelector('.hamburger');
+      hamburger.style.display = 'none';
+      closeButton.style.display = 'block';
+      document.querySelector('.tabs').style.display = 'flex';
+    }
+
+    function closeMenu() {
+      const hamburger = document.querySelector('.hamburger');
+      hamburger.style.display = 'flex';
+      closeButton.style.display = 'none';
+      document.querySelector('.tabs').style.display = 'none';
+    }
   </script>
 </body>
 

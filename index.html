@@ -69,7 +69,6 @@
         transform: translateY(20px);
         opacity: 0;
       }
-
       to {
         transform: translateY(0);
         opacity: 1;
@@ -94,30 +93,6 @@
       color: #00adb5;
     }
 
-    /* Hamburger menu styles */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      margin: 20px;
-    }
-
-    .bar {
-      height: 4px;
-      width: 25px;
-      background-color: #eaeaea;
-      margin: 3px 0;
-      transition: 0.4s;
-    }
-
-    .close {
-      display: none;
-      cursor: pointer;
-      font-size: 2em;
-      color: #eaeaea;
-      margin: 20px;
-    }
-
     /* Responsive styles */
     @media (max-width: 768px) {
       h1 {
@@ -139,14 +114,6 @@
       .content {
         padding: 10px; /* More padding for mobile content */
       }
-
-      .hamburger {
-        display: flex; /* Show hamburger menu on mobile */
-      }
-
-      .close {
-        display: block; /* Show close button on mobile */
-      }
     }
 
     @media (min-width: 769px) {
@@ -160,16 +127,34 @@
 <body>
   <h1>Recycling Made Easy</h1>
 
-  <div class="hamburger" onclick="toggleMenu()">
-    <div class="bar"></div>
-    <div class="bar"></div>
-    <div class="bar"></div>
-  </div>
-  <div class="close" onclick="closeMenu()" style="display: none;">&times;</div>
-
   <div class="tabs">
+    <div class="tab active" data-content="pouch">Pouch made with a Plastic Bottle</div>
     <div class="tab" data-content="bag">Bag made with an old newspaper</div>
     <div class="tab" data-content="container">Can Container</div>
+  </div>
+
+  <div class="content active" id="pouch">
+    <iframe id="video1" src="https://www.youtube.com/embed/pbh6Lm92qjM" title="YouTube video player"></iframe>
+    <div class="sustainability">
+      <h3>I Made a Pouch!</h3>
+      <p>
+        I made a pouch using a plastic bottle and a zipper. This project is a fantastic example of upcycling, which helps reduce plastic waste that would otherwise end up in landfills or the ocean. By repurposing a plastic bottle, I’m giving it a second life, minimizing the need for new materials, and promoting sustainability.
+      </p>
+      <h4>Benefits:</h4>
+      <ul>
+        <li><strong>Reduces Waste:</strong> By turning a plastic bottle into a pouch, I help decrease plastic waste.</li>
+        <li><strong>Saves Resources:</strong> This process minimizes the demand for new materials, lowering environmental impact.</li>
+        <li><strong>Encourages Creativity:</strong> It promotes innovative ways to recycle everyday items.</li>
+      </ul>
+      <h4>How I Made It:</h4>
+      <ol>
+        <li><strong>Gather Materials:</strong> I collected a clean plastic bottle, a zipper, scissors, and a hot glue gun.</li>
+        <li><strong>Cut the Bottle:</strong> I cut off the top half of the bottle, leaving the bottom half for the pouch.</li>
+        <li><strong>Attach the Zipper:</strong> I lined the zipper around the opening and glued it securely to the edges of the bottle.</li>
+        <li><strong>Finishing Touches:</strong> Once the glue dried, I had a durable and practical pouch ready for use.</li>
+      </ol>
+      <p>This upcycled pouch is perfect for storing small items, showcasing how simple creativity can make a positive impact on the environment!</p>
+    </div>
   </div>
 
   <div class="content" id="bag">
@@ -221,7 +206,6 @@
   <script>
     const tabs = document.querySelectorAll('.tab');
     const contents = document.querySelectorAll('.content');
-    const closeButton = document.querySelector('.close');
 
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
@@ -235,20 +219,6 @@
         document.getElementById(tab.dataset.content).classList.add('active');
       });
     });
-
-    function toggleMenu() {
-      const hamburger = document.querySelector('.hamburger');
-      hamburger.style.display = 'none';
-      closeButton.style.display = 'block';
-      document.querySelector('.tabs').style.display = 'flex';
-    }
-
-    function closeMenu() {
-      const hamburger = document.querySelector('.hamburger');
-      hamburger.style.display = 'flex';
-      closeButton.style.display = 'none';
-      document.querySelector('.tabs').style.display = 'none';
-    }
   </script>
 </body>
 

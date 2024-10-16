@@ -32,7 +32,9 @@
       cursor: pointer;
       font-size: 2em;
       color: #f1f1f1;
-      margin-top: 15px;
+      position: absolute;
+      top: 15px;
+      left: 15px; /* Moved to the left side */
     }
 
     .menu-icon .line {
@@ -127,6 +129,11 @@
         flex-direction: column;
         max-height: 0; /* Hide tabs on mobile */
         overflow: hidden;
+        position: absolute;
+        left: 0;
+        top: 60px;
+        width: 100%; /* Full width */
+        background-color: #1e1e1e; /* Match content background */
       }
 
       .tabs.open {

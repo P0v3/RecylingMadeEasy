@@ -34,6 +34,7 @@
       top: 15px;
       left: 15px;
       z-index: 1001; /* Ensure it's above other content */
+      transition: transform 0.3s ease; /* Smooth transition for icon change */
     }
 
     .menu-icon .line {
@@ -41,6 +42,7 @@
       height: 3px;
       background-color: #f1f1f1;
       margin: 6px 0;
+      transition: opacity 0.3s ease; /* Smooth transition for lines */
     }
 
     /* Left-side Sliding Menu */
@@ -62,16 +64,6 @@
 
     .side-menu.open {
       left: 0; /* Slide in */
-    }
-
-    /* Close Button */
-    .close-btn {
-      background-color: transparent;
-      color: #f1f1f1;
-      font-size: 1.5em;
-      cursor: pointer;
-      border: none;
-      align-self: flex-start;
     }
 
     /* Styles for Menu Links */
@@ -213,7 +205,6 @@
 
   <!-- Sliding Side Menu -->
   <div class="side-menu" id="sideMenu">
-    <button class="close-btn" id="closeBtn">×</button>
     <ul>
       <li><a href="#pouch" class="menu-link">Pouch Project</a></li>
       <li><a href="#bag" class="menu-link">Paper Bag Project</a></li>
@@ -258,19 +249,24 @@
   <script>
     const menuIcon = document.getElementById('menuIcon');
     const sideMenu = document.getElementById('sideMenu');
-    const closeBtn = document.getElementById('closeBtn');
     const bodyContent = document.body;
 
-    // Open side menu
+    // Toggle side menu
     menuIcon.addEventListener('click', () => {
-      sideMenu.classList.add('open');
-      bodyContent.classList.add('content-shift');
-    });
+      sideMenu.classList.toggle('open');
+      bodyContent.classList.toggle('content-shift');
 
-    // Close side menu
-    closeBtn.addEventListener('click', () => {
-      sideMenu.classList.remove('open');
-      bodyContent.classList.remove('content-shift');
+      // Change the hamburger icon to "X" when menu is open
+      const lines = menuIcon.querySelectorAll('.line');
+      lines.forEach((line, index) => {
+        line.style.opacity = sideMenu.classList.contains('open') ? '0' : '1';
+        if (index === 1) {
+          line.style.transform = sideMenu.classList.contains('open') ? 'rotate(45deg)' : 'rotate(0deg)';
+        }
+        if (index === 2) {
+          line.style.transform = sideMenu.classList.contains('open') ? 'rotate(-45deg)' : 'rotate(0deg)';
+        }
+      });
     });
 
     // Close menu when clicking menu links
@@ -278,6 +274,11 @@
       link.addEventListener('click', () => {
         sideMenu.classList.remove('open');
         bodyContent.classList.remove('content-shift');
+        const lines = menuIcon.querySelectorAll('.line');
+        lines.forEach((line, index) => {
+          line.style.opacity = '1';
+          line.style.transform = 'rotate(0deg)';
+        });
       });
     });
 

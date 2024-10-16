@@ -42,7 +42,7 @@
       height: 3px;
       background-color: #f1f1f1;
       margin: 6px 0;
-      transition: opacity 0.3s ease; /* Smooth transition for lines */
+      transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition for lines */
     }
 
     /* Left-side Sliding Menu */
@@ -258,15 +258,9 @@
 
       // Change the hamburger icon to "X" when menu is open
       const lines = menuIcon.querySelectorAll('.line');
-      lines.forEach((line, index) => {
-        line.style.opacity = sideMenu.classList.contains('open') ? '0' : '1';
-        if (index === 1) {
-          line.style.transform = sideMenu.classList.contains('open') ? 'rotate(45deg)' : 'rotate(0deg)';
-        }
-        if (index === 2) {
-          line.style.transform = sideMenu.classList.contains('open') ? 'rotate(-45deg)' : 'rotate(0deg)';
-        }
-      });
+      lines[0].style.transform = sideMenu.classList.contains('open') ? 'rotate(45deg) translateY(9px)' : 'rotate(0deg) translateY(0)';
+      lines[1].style.opacity = sideMenu.classList.contains('open') ? '0' : '1';
+      lines[2].style.transform = sideMenu.classList.contains('open') ? 'rotate(-45deg) translateY(-9px)' : 'rotate(0deg) translateY(0)';
     });
 
     // Close menu when clicking menu links
@@ -275,10 +269,9 @@
         sideMenu.classList.remove('open');
         bodyContent.classList.remove('content-shift');
         const lines = menuIcon.querySelectorAll('.line');
-        lines.forEach((line, index) => {
-          line.style.opacity = '1';
-          line.style.transform = 'rotate(0deg)';
-        });
+        lines[0].style.transform = 'rotate(0deg) translateY(0)';
+        lines[1].style.opacity = '1';
+        lines[2].style.transform = 'rotate(0deg) translateY(0)';
       });
     });
 

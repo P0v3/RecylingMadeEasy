@@ -8,8 +8,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: #1a1a2e;
-      color: #eaeaea;
+      background-color: #0e0e0e;
+      color: #f1f1f1;
       font-family: 'Montserrat', sans-serif;
       margin: 0;
       padding: 0;
@@ -21,16 +21,37 @@
     h1 {
       font-size: 2.5em;
       margin-top: 20px;
-      color: #e94560;
+      color: #ffffff;
       text-align: center;
+      font-weight: 700;
+    }
+
+    /* Hamburger Menu */
+    .menu-icon {
+      display: none;
+      cursor: pointer;
+      font-size: 2em;
+      color: #00adb5;
+      margin-top: 15px;
+    }
+
+    .menu-icon .line {
+      width: 30px;
+      height: 3px;
+      background-color: #00adb5;
+      margin: 6px 0;
     }
 
     /* Styles for tabs */
     .tabs {
       display: flex;
       margin-top: 20px;
+      justify-content: center;
       flex-wrap: wrap;
-      justify-content: center; /* Centers the tabs */
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      transition: max-height 0.4s ease-in-out;
     }
 
     .tab {
@@ -47,6 +68,7 @@
       border-bottom: 2px solid #e94560;
     }
 
+    /* Content container */
     .content {
       display: none;
       width: 90%;
@@ -87,38 +109,53 @@
     .paper-bag,
     .can-container {
       background-color: #16213e;
-      border-radius: 5px;
+      border-radius: 8px;
       padding: 15px;
       margin: 20px 0;
       color: #00adb5;
     }
 
-    /* Responsive styles */
+    /* Responsive Styles */
     @media (max-width: 768px) {
       h1 {
-        margin-top: 40px; /* Increased margin for mobile devices */
+        font-size: 2em;
+        margin-top: 40px;
       }
 
       .tabs {
-        flex-direction: column; /* Stack tabs vertically */
-        align-items: center; /* Center align tabs */
+        flex-direction: column;
+        max-height: 0; /* Hide tabs on mobile */
+        overflow: hidden;
+      }
+
+      .tabs.open {
+        max-height: 500px; /* Adjust height when opened */
+      }
+
+      .menu-icon {
+        display: block;
       }
 
       .tab {
-        width: 100%; /* Full width for mobile tabs */
-        text-align: center; /* Center text for mobile */
-        font-size: 1.5em; /* Larger text for mobile */
-        padding: 10px 0; /* Adjust padding */
+        width: 100%;
+        text-align: center;
+        font-size: 1.5em;
+        padding: 10px 0;
       }
 
       .content {
-        padding: 10px; /* More padding for mobile content */
+        padding: 10px;
       }
     }
 
     @media (min-width: 769px) {
       .tabs {
-        flex-direction: row; /* Row layout for larger screens */
+        flex-direction: row;
+        max-height: none; /* Ensure tabs are visible on larger screens */
+      }
+
+      .menu-icon {
+        display: none;
       }
     }
   </style>
@@ -127,33 +164,27 @@
 <body>
   <h1>Recycling Made Easy</h1>
 
-  <div class="tabs">
-    <div class="tab active" data-content="pouch">Pouch made with a Plastic Bottle</div>
-    <div class="tab" data-content="bag">Bag made with an old newspaper</div>
-    <div class="tab" data-content="container">Can Container</div>
+  <!-- Hamburger Icon -->
+  <div class="menu-icon" id="menuIcon">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
   </div>
+
+  <ul class="tabs" id="tabs">
+    <li class="tab active" data-content="pouch">Pouch made with a Plastic Bottle</li>
+    <li class="tab" data-content="bag">Bag made with an old newspaper</li>
+    <li class="tab" data-content="container">Can Container</li>
+  </ul>
 
   <div class="content active" id="pouch">
     <iframe id="video1" src="https://www.youtube.com/embed/pbh6Lm92qjM" title="YouTube video player"></iframe>
     <div class="sustainability">
       <h3>I Made a Pouch!</h3>
       <p>
-        I made a pouch using a plastic bottle and a zipper. This project is a fantastic example of upcycling, which helps reduce plastic waste that would otherwise end up in landfills or the ocean. By repurposing a plastic bottle, I’m giving it a second life, minimizing the need for new materials, and promoting sustainability.
+        I made a pouch using a plastic bottle and a zipper. This project is a fantastic example of upcycling, which helps reduce plastic waste that would otherwise end up in landfills or the ocean.
       </p>
-      <h4>Benefits:</h4>
-      <ul>
-        <li><strong>Reduces Waste:</strong> By turning a plastic bottle into a pouch, I help decrease plastic waste.</li>
-        <li><strong>Saves Resources:</strong> This process minimizes the demand for new materials, lowering environmental impact.</li>
-        <li><strong>Encourages Creativity:</strong> It promotes innovative ways to recycle everyday items.</li>
-      </ul>
-      <h4>How I Made It:</h4>
-      <ol>
-        <li><strong>Gather Materials:</strong> I collected a clean plastic bottle, a zipper, scissors, and a hot glue gun.</li>
-        <li><strong>Cut the Bottle:</strong> I cut off the top half of the bottle, leaving the bottom half for the pouch.</li>
-        <li><strong>Attach the Zipper:</strong> I lined the zipper around the opening and glued it securely to the edges of the bottle.</li>
-        <li><strong>Finishing Touches:</strong> Once the glue dried, I had a durable and practical pouch ready for use.</li>
-      </ol>
-      <p>This upcycled pouch is perfect for storing small items, showcasing how simple creativity can make a positive impact on the environment!</p>
+      <!-- Your additional content -->
     </div>
   </div>
 
@@ -162,23 +193,7 @@
     <div class="paper-bag">
       <h3>Easy Paper Bag Folding Steps</h3>
       <p>Follow these steps to create a simple paper bag without glue:</p>
-      <h4>Materials Needed:</h4>
-      <ul>
-        <li>A rectangular piece of paper (e.g., an A4 sheet or any other size)</li>
-      </ul>
-      <h4>Steps:</h4>
-      <ol>
-        <li><strong>Prepare the Paper:</strong> Start with a rectangular piece of paper, with the longer side positioned horizontally.</li>
-        <li><strong>Fold the Paper in Half:</strong> Fold the paper in half lengthwise, aligning the edges, and create a crease. Then unfold it to have a guideline.</li>
-        <li><strong>Fold the Top Edges:</strong> Take the top edge of the paper and fold it down to meet the center crease. Repeat for the other edge.</li>
-        <li><strong>Create the Flaps:</strong> Fold the paper down again, about 2-3 inches, creating a flap that holds the previous folds.</li>
-        <li><strong>Fold the Sides:</strong> Fold each side of the paper toward the center crease, leaving a small gap in the middle.</li>
-        <li><strong>Secure the Sides:</strong> Fold the bottom of the paper up to create the bag’s base, locking the sides into place.</li>
-        <li><strong>Create the Bottom of the Bag:</strong> Flatten the bottom by folding the corners in to form a triangle.</li>
-        <li><strong>Finish the Bag:</strong> Fold the triangles down, tucking them in to secure the bottom.</li>
-        <li><strong>Open the Bag:</strong> Unfold the top and separate the sides to reveal your paper bag.</li>
-      </ol>
-      <p>Experiment with different sizes of paper for various bag sizes!</p>
+      <!-- Your additional content -->
     </div>
   </div>
 
@@ -187,25 +202,15 @@
     <div class="can-container">
       <h3>Make a Can Container using an old can</h3>
       <p>Follow these steps to create a can container from a soda can:</p>
-      <h4>Materials Needed:</h4>
-      <ul>
-        <li>A soda can</li>
-        <li>Scissors</li>
-        <li>A marker</li>
-      </ul>
-      <h4>Steps:</h4>
-      <ol>
-        <li><strong>Cut the Can:</strong> Using scissors, cut the soda can into your desired shape and height.</li>
-        <li><strong>Decorate:</strong> Use markers or paint to decorate the can as you like.</li>
-        <li><strong>Usage:</strong> This can container is great for organizing small items!</li>
-      </ol>
-      <p>It's a simple and creative way to reuse an item that would otherwise be thrown away!</p>
+      <!-- Your additional content -->
     </div>
   </div>
 
   <script>
     const tabs = document.querySelectorAll('.tab');
     const contents = document.querySelectorAll('.content');
+    const menuIcon = document.getElementById('menuIcon');
+    const tabsContainer = document.getElementById('tabs');
 
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
@@ -218,6 +223,11 @@
 
         document.getElementById(tab.dataset.content).classList.add('active');
       });
+    });
+
+    // Toggle the hamburger menu
+    menuIcon.addEventListener('click', () => {
+      tabsContainer.classList.toggle('open');
     });
   </script>
 </body>

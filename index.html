@@ -33,6 +33,7 @@
       position: absolute;
       top: 15px;
       left: 15px;
+      z-index: 1001; /* Ensure it's above other content */
     }
 
     .menu-icon .line {
@@ -56,7 +57,7 @@
       padding: 20px;
       box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
       transition: left 0.3s ease; /* Smooth slide in */
-      z-index: 1000;
+      z-index: 1000; /* Ensure it appears above other content */
     }
 
     .side-menu.open {
@@ -96,7 +97,7 @@
 
     /* Push content slightly when menu opens */
     .content-shift {
-      transform: translateX(150px); /* Shift content slightly right when menu opens */
+      transform: translateX(200px); /* Shift content slightly right when menu opens */
     }
 
     /* Tabs and content */

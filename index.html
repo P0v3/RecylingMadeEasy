@@ -1,9 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recycling Made Easy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1a1a2e;
+      color: #eaeaea;
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-top: 20px;
+      color: #e94560;
+      text-align: center;
+    }
+
+    /* Styles for tabs */
+    .tabs {
+      display: flex;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      justify-content: center; /* Centers the tabs */
+    }
+
+    .tab {
+      cursor: pointer;
+      padding: 15px;
+      margin: 0 10px;
+      font-size: 1.3em;
+      color: #00adb5;
+      border-bottom: 2px solid transparent;
+      transition: border-bottom 0.3s;
+    }
+
+    .tab.active {
+      border-bottom: 2px solid #e94560;
+    }
+
+    .content {
+      display: none;
+      width: 90%;
+      max-width: 800px;
+      margin-top: 20px;
+      position: relative;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      overflow: hidden;
+    }
+
+    .content.active {
+      display: block;
+      opacity: 1;
+      animation: slideIn 0.5s forwards;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    iframe {
+      width: 100%;
+      height: auto;
+      max-height: 315px;
+      border: none;
+      margin-top: 20px;
+    }
+
+    .sustainability,
+    .paper-bag,
+    .can-container {
+      background-color: #16213e;
+      border-radius: 5px;
+      padding: 15px;
+      margin: 20px 0;
+      color: #00adb5;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      h1 {
+        margin-top: 40px; /* Increased margin for mobile devices */
+      }
+
+      .tabs {
+        flex-direction: column; /* Stack tabs vertically */
+        align-items: center; /* Center align tabs */
+      }
+
+      .tab {
+        width: 100%; /* Full width for mobile tabs */
+        text-align: center; /* Center text for mobile */
+        font-size: 1.5em; /* Larger text for mobile */
+        padding: 10px 0; /* Adjust padding */
+      }
+
+      .content {
+        padding: 10px; /* More padding for mobile content */
+      }
+    }
+
+    @media (min-width: 769px) {
+      .tabs {
+        flex-direction: row; /* Row layout for larger screens */
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Recycling Made Easy</h1>
+
+  <div class="tabs">
+    <div class="tab active" data-content="pouch">Pouch made with a Plastic Bottle</div>
+    <div class="tab" data-content="bag">Bag made with an old newspaper</div>
+    <div class="tab" data-content="container">Can Container</div>
+  </div>
+
+  <div class="content active" id="pouch">
+    <iframe id="video1" src="https://www.youtube.com/embed/pbh6Lm92qjM" title="YouTube video player"></iframe>
+    <div class="sustainability">
+      <h3>I Made a Pouch!</h3>
+      <p>
+        I made a pouch using a plastic bottle and a zipper. This project is a fantastic example of upcycling, which helps reduce plastic waste that would otherwise end up in landfills or the ocean. By repurposing a plastic bottle, I’m giving it a second life, minimizing the need for new materials, and promoting sustainability.
+      </p>
+      <h4>Benefits:</h4>
+      <ul>
+        <li><strong>Reduces Waste:</strong> By turning a plastic bottle into a pouch, I help decrease plastic waste.</li>
+        <li><strong>Saves Resources:</strong> This process minimizes the demand for new materials, lowering environmental impact.</li>
+        <li><strong>Encourages Creativity:</strong> It promotes innovative ways to recycle everyday items.</li>
+      </ul>
+      <h4>How I Made It:</h4>
+      <ol>
+        <li><strong>Gather Materials:</strong> I collected a clean plastic bottle, a zipper, scissors, and a hot glue gun.</li>
+        <li><strong>Cut the Bottle:</strong> I cut off the top half of the bottle, leaving the bottom half for the pouch.</li>
+        <li><strong>Attach the Zipper:</strong> I lined the zipper around the opening and glued it securely to the edges of the bottle.</li>
+        <li><strong>Finishing Touches:</strong> Once the glue dried, I had a durable and practical pouch ready for use.</li>
+      </ol>
+      <p>This upcycled pouch is perfect for storing small items, showcasing how simple creativity can make a positive impact on the environment!</p>
+    </div>
+  </div>
+
+  <div class="content" id="bag">
+    <iframe id="video2" src="https://www.youtube.com/embed/-LJoPDHKM74" title="YouTube video player"></iframe>
+    <div class="paper-bag">
+      <h3>Easy Paper Bag Folding Steps</h3>
+      <p>Follow these steps to create a simple paper bag without glue:</p>
+      <h4>Materials Needed:</h4>
+      <ul>
+        <li>A rectangular piece of paper (e.g., an A4 sheet or any other size)</li>
+      </ul>
       <h4>Steps:</h4>
       <ol>
-        <li><strong>Cut the Can:</strong> Carefully cut the top of the can off using scissors.</li>
-        <li><strong>Smooth the Edges:</strong> Use sandpaper to smooth out the sharp edges to avoid cuts.</li>
-        <li><strong>Decorate:</strong> Personalize the container with paint, stickers, or markers.</li>
+        <li><strong>Prepare the Paper:</strong> Start with a rectangular piece of paper, with the longer side positioned horizontally.</li>
+        <li><strong>Fold the Paper in Half:</strong> Fold the paper in half lengthwise, aligning the edges, and create a crease. Then unfold it to have a guideline.</li>
+        <li><strong>Fold the Top Edges:</strong> Take the top edge of the paper and fold it down to meet the center crease. Repeat for the other edge.</li>
+        <li><strong>Create the Flaps:</strong> Fold the paper down again, about 2-3 inches, creating a flap that holds the previous folds.</li>
+        <li><strong>Fold the Sides:</strong> Fold each side of the paper toward the center crease, leaving a small gap in the middle.</li>
+        <li><strong>Secure the Sides:</strong> Fold the bottom of the paper up to create the bag’s base, locking the sides into place.</li>
+        <li><strong>Create the Bottom of the Bag:</strong> Flatten the bottom by folding the corners in to form a triangle.</li>
+        <li><strong>Finish the Bag:</strong> Fold the triangles down, tucking them in to secure the bottom.</li>
+        <li><strong>Open the Bag:</strong> Unfold the top and separate the sides to reveal your paper bag.</li>
       </ol>
+      <p>Experiment with different sizes of paper for various bag sizes!</p>
+    </div>
+  </div>
+
+  <div class="content" id="container">
+    <iframe id="video3" src="https://www.youtube.com/embed/mqx4Aqmj1lE" title="YouTube video player"></iframe>
+    <div class="can-container">
+      <h3>Make a Can Container using an old can</h3>
+      <p>Follow these steps to create a can container from a soda can:</p>
+      <h4>Materials Needed:</h4>
+      <ul>
+        <li>A soda can</li>
+        <li>Scissors</li>
+        <li>A marker</li>
+      </ul>
+      <h4>Steps:</h4>
+      <ol>
+        <li><strong>Cut the Can:</strong> Using scissors, cut the soda can into your desired shape and height.</li>
+        <li><strong>Decorate:</strong> Use markers or paint to decorate the can as you like.</li>
+        <li><strong>Usage:</strong> This can container is great for organizing small items!</li>
+      </ol>
+      <p>It's a simple and creative way to reuse an item that would otherwise be thrown away!</p>
     </div>
   </div>
 
@@ -14,19 +210,15 @@
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
         tabs.forEach(t => t.classList.remove('active'));
-        contents.forEach(content => content.classList.remove('active'));
-
         tab.classList.add('active');
-        document.getElementById(tab.getAttribute('data-content')).classList.add('active');
+
+        contents.forEach(content => {
+          content.classList.remove('active');
+        });
+
+        document.getElementById(tab.dataset.content).classList.add('active');
       });
     });
-
-    function toggleMenu() {
-      const lines = document.querySelectorAll('.line');
-      lines.forEach(line => {
-        line.classList.toggle('active');
-      });
-    }
   </script>
 </body>
 
